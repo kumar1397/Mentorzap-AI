@@ -105,7 +105,7 @@ const uniqueDomains = useMemo(() => {
               <Image
                 src={clone.image ?? "/newPic.jpg"}
                 alt={clone.clone_name}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-[center_20px]"
                 width={100}
                 height={100}
               />
