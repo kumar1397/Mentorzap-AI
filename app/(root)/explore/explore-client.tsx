@@ -95,7 +95,7 @@ const uniqueDomains = useMemo(() => {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredClones.map((clone: Clone) => (
+        {filteredClones.slice().reverse().map((clone: Clone) => (
           <Card
             key={clone.clone_id}
             className="relative overflow-hidden group transition-all duration-300 transform hover:-translate-y-1 shadow-md border-0 h-[300px]"
@@ -118,17 +118,16 @@ const uniqueDomains = useMemo(() => {
               <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-md transition-all duration-500 ease-in-out h-[70px] group-hover:h-[120px] p-4 flex flex-col justify-end text-white">
 
                 {/* Top row — clone name + chat button */}
-                <div className="flex items-center justify-between text-xs mb-2">
-                  <div className="flex items-center gap-3 min-w-0">
-                    
-                    <CardTitle className="text-lg font-serif truncate min-w-0">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <div className="flex flex-col gap-1 min-w-0 flex-1">
+                    <CardTitle className="text-lg font-serif truncate min-w-0 text-left">
                       {clone.clone_name}
                     </CardTitle>
                   </div>
                   <Link href={`/chat/${clone.clone_id}`}>
                     <Button
                       size="sm"
-                      className="bg-white text-black hover:bg-gray-100"
+                      className="bg-white text-black hover:bg-gray-100 flex-shrink-0"
                     >
                       Chat Now
                     </Button>
@@ -136,7 +135,7 @@ const uniqueDomains = useMemo(() => {
                 </div>
 
                 {/* Clone intro (hidden until hover) */}
-                <p className="text-base opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-500 ease-in-out line-clamp-3">
+                <p className="text-base text-left opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-500 ease-in-out line-clamp-3">
                   {clone.clone_intro}
                 </p>
               </div>

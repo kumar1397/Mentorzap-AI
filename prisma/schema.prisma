@@ -40,6 +40,7 @@ enum userRole {
 model CloneProfile {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   clone_id            String   @unique
+  clone_intro         String
   user_email          String
   clone_name          String
   tone                String[]

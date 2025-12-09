@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message: "UserId missing" }, { status: 400 });
     }
     const cloneName = formData.get("clone_name")?.toString() ?? "Untitled Clone";
+    const cloneIntro = formData.get("clone_intro")?.toString() ?? "";
     const tone = toArray(formData.get("tone"));
     const style = toArray(formData.get("style"));
     const values = toArray(formData.get("values"));
@@ -68,6 +69,7 @@ export async function POST(req: NextRequest) {
         clone_id: `clone_u_${Math.random().toString(16).substring(2, 14)}`,
         user_email: userEmail || "",
         clone_name: cloneName,
+        clone_intro: cloneIntro,
         tone,
         style,
         values,

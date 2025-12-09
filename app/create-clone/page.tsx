@@ -232,6 +232,7 @@ export default function CreateClone() {
     formData.append("userId", userId);
     formData.append("userEmail", email);
     formData.append("clone_name", cloneName ? cloneName : name);
+    formData.append("clone_intro", `${jobrole} at ${company}`);
     formData.append("domain", selectedDomain ? selectedDomain : "");
     formData.append("tone", JSON.stringify(selectedTones));
     formData.append("style", JSON.stringify(selectedStyles));
