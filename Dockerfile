@@ -1,23 +1,21 @@
-# Use Node.js 20 base image
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files first
-COPY package*.json ./
+# 1. Copy package files
+COPY package.json package-lock.json* ./
 
-# Copy Prisma schema before installing dependencies
+# 2. Copy prisma schema BEFORE install
 COPY prisma ./prisma
 
-# Install dependencies
-RUN npm install 
+# 3. Install deps (postinstall can now find schema)
+RUN npm ci
 
-# Copy the rest of the code
+# 4. Copy rest of the app
 COPY . .
 
-# Build your app (if needed)
+# 5. Build Next.js
 RUN npm run build
 
 EXPOSE 3000
-
 CMD ["npm", "start"]
